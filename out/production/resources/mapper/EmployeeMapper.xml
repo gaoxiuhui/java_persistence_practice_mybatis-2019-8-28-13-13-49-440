@@ -6,4 +6,26 @@
        select id,name,age from employee
     </select>
 
+    <select id="selectOne" resultType="tws.entity.Employee">
+       select id,name,age from employee
+       where id=#{employeeID}
+    </select>
+
+    <insert id="insert">
+        insert into `employee`(`id`,`name`,`age`)
+        values(#{employee.id},#{employee.name},#{employee.age})
+    </insert>
+
+    <update id="updateOne">
+        update `employee` set
+        name=#{employee.name},
+        age=#{employee.age}
+        where id=#{employeeID}
+    </update>
+
+    <delete id="deleteOne">
+        delete employee
+        where  id=#{employeeID}
+    </delete>
+
 </mapper>

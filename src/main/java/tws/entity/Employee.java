@@ -1,11 +1,11 @@
 package tws.entity;
 
 public class Employee {
-    private int id;
+    private String id;
     private String name;
     private int age;
 
-    public Employee(int id, String name, int age) {
+    public Employee(String id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -14,11 +14,11 @@ public class Employee {
     public Employee() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -36,5 +36,14 @@ public class Employee {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
