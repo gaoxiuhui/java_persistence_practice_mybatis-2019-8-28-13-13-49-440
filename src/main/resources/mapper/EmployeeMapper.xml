@@ -24,7 +24,7 @@
     </update>
 
     <delete id="deleteOne">
-        delete employee
+        delete from employee
         where  id=#{employeeID}
     </delete>
 
