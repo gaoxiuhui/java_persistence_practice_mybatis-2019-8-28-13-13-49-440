@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tws.dto.EmployeeDto;
 import tws.entity.Employee;
 import tws.repository.EmployeeMapper;
+import tws.service.EmployeeService;
 
 
 import java.net.URI;
@@ -18,6 +20,15 @@ import java.util.UUID;
 public class EmployeeController {
     @Autowired
     private EmployeeMapper employeeMapper;
+    @Autowired
+    private EmployeeService  employeeService;
+
+    @GetMapping("/{employeeID}")
+    public ResponseEntity<EmployeeDto> selectOneEmployeeByID(@PathVariable String employeeID) {
+
+        return ResponseEntity.ok(employeeService.getEmployWithDesc(employeeID));
+
+    }
     //获得列表
     @GetMapping("")
     public ResponseEntity<List<Employee>> getAll(){
@@ -52,4 +63,5 @@ public class EmployeeController {
         employeeMapper.deleteOne(employeeID);
         return ResponseEntity.ok().build();
     }
+
 }
