@@ -2,8 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tws.repository.EmployeeMapper">
 
+    <select id="selectAllByKeyWord" resultType="tws.entity.Employee">
+       select * from `employee`
+       <if test="keyWord!=null">
+           <bind name="pattern" value="'%'+keyWord+'%'"/>
+           where name  like #{pattern}
+       </if>>
+    </select>
+
     <select id="selectAll" resultType="tws.entity.Employee">
+        select * from `employee`
+    </select>
+
+    <select id="selectAllByPage" resultType="tws.entity.Employee">
        select id,name,age from employee
+       limit #{pageSize} offset #{offset}
     </select>
 
     <select id="selectOne" resultType="tws.entity.Employee">
@@ -24,7 +37,7 @@
     </update>
 
     <delete id="deleteOne">
-        delete employee
+        delete from employee
         where  id=#{employeeID}
     </delete>
 

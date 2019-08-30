@@ -11,7 +11,8 @@ import java.util.List;
 public interface EmployeeMapper {
    // @Select("select id,name,age from employee")
     // 查询
-    List<Employee> selectAll();
+    List<Employee> selectAllByPage(@Param("offset") Integer offset,
+                             @Param("pageSize") Integer pageSize);
     //通过id查询
     Employee selectOne(@Param("employeeID") String employeeID);
     //插入
@@ -20,5 +21,9 @@ public interface EmployeeMapper {
     void updateOne(@Param("employeeID") String employeeID,
                    @Param("employee") Employee employee);
  //删除
- void deleteOne(@Param("employeeID") String employeeID);
+    void deleteOne(@Param("employeeID") String employeeID);
+  //查询所有
+     List<Employee> selectAllByKeyWord(@Param("keyWord") String keyWord);
+    //查询所有
+    List<Employee> selectAll();
 }
