@@ -41,7 +41,7 @@ public class EmployeeService {
         if(keyWord==null){
             return employeeMapper.selectAll();
         }else{
-            return employeeMapper.selectAll(keyWord);
+            return employeeMapper.selectAllByKeyWord(keyWord);
         }
     }
     public List<Employee> getEmployees(){

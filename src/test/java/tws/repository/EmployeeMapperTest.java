@@ -23,7 +23,7 @@ public class EmployeeMapperTest {
     @Test
     public void insertTest() {
         //given
-        jdbcTemplate.execute("insert into employee values('1','鲁'，12)");
+        jdbcTemplate.execute("insert into employee values('1','鲁',12)");
         //when
         List<Employee> employees = employeeMapper.selectAll();
         //then
